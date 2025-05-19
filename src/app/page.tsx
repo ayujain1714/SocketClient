@@ -1,7 +1,6 @@
 "use client";
 
-import { get } from "http";
-import { ChangeEvent, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { io, Socket } from "socket.io-client";
 
 export default function Home() {
@@ -11,7 +10,7 @@ export default function Home() {
   >([]);
   const [anotherPointer, setAnotherPointer] = useState<
     | {
-        id?: String;
+        id?: string;
         x: number;
         y: number;
         color?: string;
