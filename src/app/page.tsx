@@ -93,7 +93,7 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    const socket = io("http://192.168.210.110:3000");
+    const socket = io("https://socket-server-flame.vercel.app/");
     socketRef.current = socket;
 
     socket.on("connect", () => {
