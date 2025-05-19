@@ -29,18 +29,6 @@ export default function Home() {
       "#FF33A1",
       "#FF8333",
       "#33FFA1",
-      "#A133FF",
-      "#FF33FF",
-      "#33FF33",
-      "#FF33FF",
-      "#FF5733",
-      "#33FF57",
-      "#3357FF",
-      "#FF33A1",
-      "#FF8333",
-      "#33FFA1",
-      "#A133FF",
-      "#FF33FF",
     ];
 
     return colors[Math.floor(Math.random() * colors.length)];
@@ -92,7 +80,7 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    const socket = io("https://socket-server-flame.vercel.app/");
+    const socket = io("https://socket-server-tan.vercel.app/");
     socketRef.current = socket;
 
     socket.on("connect", () => {
