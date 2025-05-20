@@ -80,7 +80,8 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    const socket = io("https://socket-server-tan.vercel.app/");
+    const socket = io("https://socketserver-ohdu.onrender.com/");
+    // const socket = io("http://192.168.2.18:3000");
     socketRef.current = socket;
 
     socket.on("connect", () => {
@@ -88,9 +89,15 @@ export default function Home() {
       setConnectionStatus("Connected");
     });
 
-    socket.on("disconnect", () => {
+    socket.on("disconnect", (reason) => {
       console.log("Disconnected from server!");
       setConnectionStatus("Disconnected");
+      if (reason) {
+        setReceivedMessages((prev) => [
+          ...prev,
+          { id: "Error", message: "Disconnected: " + reason },
+        ]);
+      }
     });
 
     socket.on("message", (message: { id: string; message: string }) => {
@@ -100,7 +107,7 @@ export default function Home() {
     socket.on(
       "pointersMove",
       (message: { id: string; x: number; y: number }) => {
-        if (message.x > 0 && message.y > 0) {
+        if (message.x != 0 && message.y != 0) {
           setAnotherPointer((prev) => {
             if (prev) {
               const ptr = prev.findIndex(
