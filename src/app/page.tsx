@@ -80,7 +80,7 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    const socket = io("https://socket-server-tan.vercel.app/");
+    const socket = io("http://localhost:3000/");
     socketRef.current = socket;
 
     socket.on("connect", () => {
